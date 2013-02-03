@@ -18,20 +18,44 @@ namespace Sb.Mocks.PlacingBets
             while(Console.ReadLine() != null)
             {
                 var coupon = new PlaceCoupon{
-                    Bets = new List<PlaceBet>{
-                        new PlaceBet{
-                            MarketSeletectionId = 1,
-                            Stake = 1.0
+                    BetCombinations = new List<PlaceBetCombination>()
+                    {
+                        new PlaceBetCombination()
+                        {
+                            BetSelections = new List<PlaceBetSelection>
+                            {
+                                new PlaceBetSelection{
+                                    MarketSeletectionId = 1,
+                                    CurrentOdds = 1.0,
+                                    CurrentSelection = "1"
+                                },
+                                new PlaceBetSelection{
+                                    MarketSeletectionId = 2,
+                                    CurrentOdds = 1.2,
+                                    CurrentSelection = "2"
+                                }
+                            },
+                            Stake = 4.0
                         },
-                        new PlaceBet{
-                            MarketSeletectionId = 2,
-                            Stake = 1.2
+
+                        new PlaceBetCombination()
+                        {
+                            BetSelections = new List<PlaceBetSelection>
+                            {
+                                new PlaceBetSelection{
+                                    MarketSeletectionId = 3,
+                                    CurrentOdds = 3.0,
+                                    CurrentSelection = "X"
+                                }
+                            },
+                            Stake = 4.0
                         }
                     }
                 };
+
                 Bus.Send(coupon);
 
-                Console.WriteLine("Coupon has been send");
+                Console.WriteLine("Coupon has been sent");
             }
         }
 
